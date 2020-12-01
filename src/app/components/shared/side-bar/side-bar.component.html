@@ -23,13 +23,9 @@
       <div class="card">
         <button (click)="showUsuarios = !showUsuarios" class="card-header text-left" >Administración de usuarios</button>
         <div class="card-body" *ngIf="showUsuarios">
-          <a class="nav-link" href="#">
+          <a class="nav-link" routerLink="/crear-usuario">
             <span data-feather="file"></span>
             Crear Usuario
-          </a>
-          <a class="nav-link" href="#">
-            <span data-feather="file"></span>
-            Modificación de usuario
           </a>
           <a routerLink="/obtener-usuarios" class="nav-link">
             <span data-feather="file"></span>

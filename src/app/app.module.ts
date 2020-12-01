@@ -13,6 +13,7 @@ import { SideBarComponent } from './components/shared/side-bar/side-bar.componen
 import { CrearUsuarioComponent } from './components/admin-usuarios/crear-usuario/crear-usuario.component';
 import { ModificarUsuarioComponent } from './components/admin-usuarios/modificar-usuario/modificar-usuario.component';
 import { ObtenerUsuariosComponent } from './components/admin-usuarios/obtener-usuarios/obtener-usuarios.component';
+import { ObtenerAerolineasComponent } from './components/admin-aerolineas/obtener-aerolineas/obtener-aerolineas.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ObtenerUsuariosComponent } from './components/admin-usuarios/obtener-us
     SideBarComponent,
     CrearUsuarioComponent,
     ModificarUsuarioComponent,
-    ObtenerUsuariosComponent
+    ObtenerUsuariosComponent,
+    ObtenerAerolineasComponent
   ],
   imports: [
     BrowserModule,

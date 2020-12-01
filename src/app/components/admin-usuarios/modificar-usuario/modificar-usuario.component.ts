@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioModel } from 'src/app/models/usuario.model';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-modificar-usuario',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModificarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario: UsuarioModel = new UsuarioModel();
+
+  constructor(private router: Router,
+              private artivatedRoute: ActivatedRoute,
+              private usuarioService: UsuariosService) { }
 
   ngOnInit(): void {
+    this.cargarCliente();
   }
+
+  cargarCliente(): void{
+    this.artivatedRoute.params.subscribe(params =>{
+      let username = params['username']
+      if(username){
+        this.usuarioService.obtenerUsuario(username).subscribe((usuario) => this.usuario = usuario)
+      }
+    })
+  }
+
+  modificarUsuario( form:NgForm ){
+    this.usuarioService.modificarUsuario( this.usuario )
+    .subscribe( resp => {
+      this.router.navigateByUrl("/obtener-usuarios");
+  });
+
+  }
+
 
 }

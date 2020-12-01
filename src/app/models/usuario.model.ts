@@ -1,8 +1,8 @@
-export class UsuarioModel {
 
+export class UsuarioModel {
+  id: number;
   password: string;
   username: string;
   enabled:boolean;
-  role:string;
-
+  role:number;
 }

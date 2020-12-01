@@ -12,7 +12,7 @@ export class AuthService {
   private url = 'http://localhost:8082/oauth/token'
 
   userToken: string;
-  expire_in: number;
+  expires_in: number;
 
   constructor(private http: HttpClient) {
     this.leerToken();
@@ -32,19 +32,19 @@ export class AuthService {
     return this.http.post(`${ this.url }`, body, {headers})
     .pipe(
       map( resp =>{
-        this.guardarToken( resp['access_token'], resp['expira_in'])
+        this.guardarToken( resp['access_token'], resp['expires_in'])
         return resp;
       })
     );
   }
 
-  private guardarToken( idToken: string, expita_in: number ){
+  private guardarToken( idToken: string, expires_in: number ){
 
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
 
     let hoy = new Date();
-    hoy.setSeconds(expita_in);
+    hoy.setSeconds(expires_in);
 
     localStorage.setItem('expira', hoy.getTime().toString());
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioModel } from 'src/app/models/usuario.model';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 
@@ -9,13 +10,17 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class ObtenerUsuariosComponent implements OnInit {
 
+  usuarios: UsuarioModel[] = [];
+
+  roles:string[] = ['Riesgos', 'DMA', 'Call center', 'Implementación', 'Administrador', 'Producto']
+
   constructor(private usuariosService: UsuariosService) {}
 
   ngOnInit(): void {
     this.usuariosService.obtenerUsuarios()
-    .subscribe( resp => {
-      console.log(resp);
-    })
+    .subscribe( resp => this.usuarios = resp)
   }
+
+
 
 }
