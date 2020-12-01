@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "snp-portal-frontend"
+    }
+  },
+  "defaultProject": "snp-portal-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
