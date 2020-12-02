@@ -7,13 +7,31 @@
     </div>
 
     <div class="col col-md-9 col-lg-9">
-      <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
+      <table class="table mt-4">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Código único</th>
+            <th scope="col">Nacional</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let aerolinea of aerolineas; let i = index">
+            <td>{{ aerolinea.id }}</td>
+            <td>{{ aerolinea.name }}</td>
+            <td>{{ aerolinea.uniqueCode }}</td>
+            <td>{{ aerolinea.nacional }}</td>
+            <td>
+              <button type="button"
+                      name="button"
+                      [routerLink]="['/aerolineas/form', aerolinea.id]"
+                      class="btn btn-dark">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

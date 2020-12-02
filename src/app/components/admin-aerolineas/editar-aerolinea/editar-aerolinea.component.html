@@ -1,0 +1,60 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-md-3 col-lg-3">
+      <app-side-bar></app-side-bar>
+    </div>
+
+    <div class="col col-md-9 col-lg-9 mt-4">
+      <h4>Editar usuario</h4>
+      <hr>
+      <form (ngSubmit) = "editarAerolinea( f )"
+            #f="ngForm">
+        <div class="form-group">
+          <label>ID</label>
+          <input type="text"
+                 class="form-control"
+                 name="id"
+                 [(ngModel)]="aerolinea.id"
+                 disabled="disabled">
+        </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text"
+                 class="form-control"
+                 name="name"
+                 [(ngModel)]="aerolinea.name">
+        </div>
+
+        <div class="form-group">
+          <label>Código único</label>
+          <input type="text"
+                 class="form-control"
+                 name="uniqueCode"
+                 [(ngModel)]="aerolinea.uniqueCode">
+        </div>
+
+
+
+        <div class="form-group">
+          <label>Nacional</label>
+          <input type="text"
+                class="form-control"
+                name="nacional"
+                [(ngModel)]="aerolinea.nacional">
+        </div>
+
+        <hr>
+
+        <div>
+          <button type="submit"
+                  class="btn btn-dark w-25">Guardar
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
