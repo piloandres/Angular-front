@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-md-3 col-lg-3">
+      <app-side-bar></app-side-bar>
+    </div>
+
+    <div class="col col-md-9 col-lg-9">
+      <div class="mt-4">
+        <button type="button" class="btn btn-dark" routerLink="/crear-usuario">Agregar usuario</button>
+      </div>
+
+      <table class="table mt-4">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Role</th>
+            <th scope="col">Enabled</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ usuario.username }}</td>
+            <td>{{ roles[usuario.role - 1] }}</td>
+            <td>{{ usuario.enabled }}</td>
+            <td>
+              <button type="button"
+                      name="button"
+                      [routerLink]="['/editar-usuario', usuario.username]"
+                      class="btn btn-dark">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
