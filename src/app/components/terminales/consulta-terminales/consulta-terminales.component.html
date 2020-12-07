@@ -8,24 +8,52 @@
     </div>
 
     <div class="col col-md-9 col-lg-9 mt-4">
-      <h4>Consulta de terminales</h4>
+      <h4>Módulo de consulta de terminales</h4>
       <hr>
-      <form>
+      <form (ngSubmit)="buscarTerminal()">
 
         <div class="form-group">
-          <label>Terminal</label>
-          <input type="text"
+
+            <input type="text"
                  class="form-control"
-                 placeholder="Consulta por número de terminal">
+                 [(ngModel)]="numeroTerminal"
+                 name="codeTerminal"
+                 placeholder="Ingrese número de terminal">
         </div>
 
         <hr>
 
-        <div class="form-group">
-          <label>Código único</label>
-          <input type="text"
-                 class="form-control"
-                 placeholder="Consulta por código único">
+        <div *ngIf="terminal != null">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Atributo</th>
+                <th scope="col">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Codigo comercio</th>
+                <td>{{ terminal.codigoComercio }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Indicador IAC</th>
+                <td>{{ terminal.indicadorIAC }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Indicador IVA</th>
+                <td>{{ terminal.indicadorIVA }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Servicios</th>
+                <td></td>
+              </tr>
+              <tr *ngFor="let servicio of terminal.servicios">
+                <th></th>
+                <td>{{ servicio.numService }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
 

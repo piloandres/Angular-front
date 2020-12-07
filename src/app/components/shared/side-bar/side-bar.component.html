@@ -35,15 +35,11 @@
       </div>
 
       <div class="card">
-        <button (click)="showTerminales = !showTerminales" class="card-header text-left" >Terminales</button>
+        <button (click)="showTerminales = !showTerminales" class="card-header text-left" >Administración de comercios</button>
         <div class="card-body" *ngIf="showTerminales">
           <a class="nav-link" routerLink="/terminales/crear">
             <span data-feather="file"></span>
             Crear nueva terminal
-          </a>
-          <a class="nav-link" routerLink="/terminales/editar">
-            <span data-feather="file"></span>
-            Modificar terminal
           </a>
           <a class="nav-link" routerLink="/terminales">
             <span data-feather="file"></span>

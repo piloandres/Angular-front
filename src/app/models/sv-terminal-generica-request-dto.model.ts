@@ -1,42 +1,40 @@
 export class TerminalGenericaRequest{
-  constructor(
-    public tipoServicio: String,
-    public codigoOriginador: String,
-    public codigoComercio: String,
-    public solicitudTerminales: SolicitudTerminal[]
-  ){}
+    public tipoServicio: String = '01';
+    public codigoOriginador: String = '3';
+    public codigoComercio: String;
+    public solicitudTerminales: SolicitudTerminal[] = [new SolicitudTerminal()];
+    public direccionInstalacion: DireccionInstalacion = new DireccionInstalacion();
 }
 
 export class SolicitudTerminal{
-  constructor(
-    public cantidadTerminales: String,
-    public idTerminales: String[],
-    public dueno: String,
-    public tipoDispositivo: String,
-    public tipoComunicacion: String,
-    public tipoIntegracionTEF: String,
-    public indicadorPropina: Number,
-    public marcaDispositivo: String,
-    public idServicio: String[],
-    public direccionDeInstalacion: DireccionInstalacion,
-    public estadoTerminal: String,
-    public serial: String,
-    public sello: String,
-    public numeroCaja: String,
-    public codigoArrendamiento: String,
-    public fechaDeseada: String,
-    public fechaRetiroProgramado: String,
-    public numeroTerminalFisicaMulticomercio: String,
-    public observaciones: String,
-  ){}
+    public cantidadTerminales: number = 1;
+    public idTerminales: String[] = [];
+    public dueno: String = '50145001';
+    public tipoDispositivo: String = 'TRMT0004';
+    public tipoComunicacion: String = '50125009';
+    public tipoIntegracionTEF: String = '50105000';
+    public indicadorPropina: Number = 0;
+    public indicadordeReferencia: string;
+    public marcaDispositivo: String = "";
+    public indicadorICA: string;
+    public indicadorIVA: string;
+    public idServicio: String[] = [];
+    public direccionDeInstalacion: DireccionInstalacion;
+    public estadoTerminal: String = 'TRMS0001';
+    public serial: String = "";
+    public sello: String = "";
+    public numeroCaja: String = "";
+    public codigoArrendamiento: String = '50040009';
+    public fechaDeseada: String;
+    public fechaRetiroProgramado: String = "";
+    public numeroTerminalFisicaMulticomercio: String = "";
+    public observaciones: String;
 }
 
 export class DireccionInstalacion {
-  constructor(
-    public pais: String,
-    public direccionNumero: String,
-    public codigoRegion: String,
-    public latitud: Number,
-    public longitud: Number,
-  ){}
+  public pais: String;
+  public direccionNumero: String;
+  public codigoRegion: String;
+  public latitud: Number;
+  public longitud: Number;
 }
