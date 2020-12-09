@@ -18,6 +18,7 @@ export class CrearTerminalComponent implements OnInit {
     this.listaServicios = this.poblarListaServicios();
   }
 
+
   crearTerminal(){
     Swal.fire({
       allowOutsideClick: false,
