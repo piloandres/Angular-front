@@ -54,6 +54,7 @@ export class SvConsultaService {
   }
 
   private createTerminalModelFromJson(terminalJson): TerminalModel {
+    console.log(terminalJson)
     const contractData = terminalJson.applications.application[0].customer[0].contract[0]
     const merchant_number = contractData.merchant[0].merchant_number[0]
     const {cst_terminal_iac, cst_terminal_iva} = contractData.merchant[0].terminal[0]

@@ -1,5 +1,5 @@
 export class TerminalGenericaRequest{
-  public tipoServicio: String = '01';
+    public tipoServicio: String = '01';
     public codigoOriginador: String = '3';
     public codigoComercio: String;
     public solicitudTerminales: SolicitudTerminal[] = [new SolicitudTerminal()];
