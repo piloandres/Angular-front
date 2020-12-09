@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  svConsultaUri: 'https://qa-consulta-qa-sv-comercios.apps-pruebas.credibanco.com/camel/api/Consulta',
 };
 
 /*

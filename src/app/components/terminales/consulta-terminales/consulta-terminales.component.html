@@ -8,30 +8,53 @@
     </div>
 
     <div class="col col-md-9 col-lg-9 mt-4">
-      <h4>Módulo de consulta</h4>
+      <h4>Módulo de consulta de terminales</h4>
       <hr>
       <form (ngSubmit)="buscarTerminal()">
 
         <div class="form-group">
-          <div class="custom-control custom-radio pb-2">
-            <input type="radio" id="customRadio1" name="campoTipoBusqueda" class="custom-control-input" valu
-                    [(ngModel)]="objetoBusqueda.operation" value="terminal">
-            <label class="custom-control-label" for="customRadio1">Terminal</label>
-          </div>
-          <div class="custom-control custom-radio pb-2">
-            <input type="radio" id="customRadio2" name="campoTipoBusqueda" class="custom-control-input"
-                    [(ngModel)]="objetoBusqueda.operation" value="comercio">
-            <label class="custom-control-label" for="customRadio2">Código único</label>
-          </div>
 
             <input type="text"
                  class="form-control"
-                 [(ngModel)]="objetoBusqueda.code"
+                 [(ngModel)]="numeroTerminal"
                  name="codeTerminal"
-                 placeholder="Número de referencia">
+                 placeholder="Ingrese número de terminal">
         </div>
 
         <hr>
+
+        <div *ngIf="terminal != null">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Atributo</th>
+                <th scope="col">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Codigo comercio</th>
+                <td>{{ terminal.codigoComercio }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Indicador IAC</th>
+                <td>{{ terminal.indicadorIAC }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Indicador IVA</th>
+                <td>{{ terminal.indicadorIVA }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Servicios</th>
+                <td></td>
+              </tr>
+              <tr *ngFor="let servicio of terminal.servicios">
+                <th></th>
+                <td>{{ servicio.numService }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
 
         <button type="submit" class="btn btn-primary">Buscar</button>

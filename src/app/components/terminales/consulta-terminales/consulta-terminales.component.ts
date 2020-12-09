@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoBuscarTerminalDto } from 'src/app/models/InfoBuscarTerminalDto.model';
+import { TerminalModel } from 'src/app/models/terminal.model';
+import { SvConsultaService } from 'src/app/services/sv-consulta.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,9 +9,10 @@ import Swal from 'sweetalert2';
 })
 export class ConsultaTerminalesComponent implements OnInit {
 
-  objetoBusqueda: InfoBuscarTerminalDto = new InfoBuscarTerminalDto();
+  numeroTerminal: string;
+  terminal: TerminalModel = null;
 
-  constructor() { }
+  constructor(private servicioConsulta: SvConsultaService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +25,10 @@ export class ConsultaTerminalesComponent implements OnInit {
     });
     Swal.showLoading();
 
-    console.log(this.objetoBusqueda);
+    console.log(this.numeroTerminal);
+    this.servicioConsulta.consultarTerminal(this.numeroTerminal).subscribe(
+      resp => this.terminal = new TerminalModel(resp.codigoComercio, resp.indicadorIAC[0], resp.indicadorIVA[0], resp.servicios)
+    );
 
     Swal.close();
   }

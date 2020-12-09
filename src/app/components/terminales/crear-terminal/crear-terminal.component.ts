@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class CrearTerminalComponent implements OnInit {
 
-  creacionTerminal: CrearTerminalDto;
+  creacionTerminal: CrearTerminalDto = new CrearTerminalDto();
   listaServicios: any[] = [];
 
   constructor() { }
@@ -26,8 +26,6 @@ export class CrearTerminalComponent implements OnInit {
     });
     Swal.showLoading();
 
-
-    this.creacionTerminal = new CrearTerminalDto();
     this.creacionTerminal.solicitudTerminales.idServicio = [];
 
     this.listaServicios.forEach((servicios) =>{
@@ -66,7 +64,6 @@ export class CrearTerminalComponent implements OnInit {
       {"nombre": "Recaudos", "codigo": "50170016", "enabled": false},
       {"nombre": "Gestor de recaudo", "codigo": "50170017", "enabled": false},
       {"nombre": "Mi pago", "codigo": "50170018", "enabled": false}
-
     ]
     return listaServicios;
   }
