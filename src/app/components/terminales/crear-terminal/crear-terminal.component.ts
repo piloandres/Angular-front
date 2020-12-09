@@ -42,7 +42,17 @@ export class CrearTerminalComponent implements OnInit {
 
     console.log(this.terminal);
     this.svTerminalGenerica.solicitarTerminalGenerica(this.terminal).subscribe(
-      resp => console.log(resp)
+      resp => {
+        console.log(resp)
+      }, (err) => {
+        console.log(err.name)
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al crear la terminal',
+          text: err.name
+
+        })
+      }
     );
 
     Swal.close();

@@ -20,8 +20,8 @@ export class SvTerminalGenericaService {
     let uri = `${environment.svTerminalGenericaUri}`
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic cGV0aTpzc29wcnVlYmFz'
+        'Authorization': 'Basic cGV0aTpzc29wcnVlYmFz',
+        'Content-Type': 'application/json'
       })
     }
 

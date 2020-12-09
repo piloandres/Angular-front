@@ -27,7 +27,16 @@ export class ConsultaTerminalesComponent implements OnInit {
 
     console.log(this.numeroTerminal);
     this.servicioConsulta.consultarTerminal(this.numeroTerminal).subscribe(
-      resp => this.terminal = new TerminalModel(resp.codigoComercio, resp.indicadorIAC[0], resp.indicadorIVA[0], resp.servicios)
+      resp => {
+        console.log(resp)
+        this.terminal = new TerminalModel(resp.codigoComercio, resp.indicadorIAC[0], resp.indicadorIVA[0], resp.servicios)
+      }, (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Terminal no encontrado',
+          text: err
+        });
+      }
     );
 
     Swal.close();
