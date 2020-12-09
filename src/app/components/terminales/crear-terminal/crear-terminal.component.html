@@ -15,7 +15,7 @@
           <label>Código comercio</label>
           <input type="text"
                  class="form-control"
-                 [(ngModel)]="creacionTerminal.codigoComercio"
+                 [(ngModel)]="terminal.codigoComercio"
                  name="codigoComercio"
                  placeholder="Código único del comercio">
         </div>
@@ -24,7 +24,7 @@
           <label>Cantidad de terminales</label>
           <input type="text"
                  class="form-control"
-                 [(ngModel)]="creacionTerminal.solicitudTerminales.cantidadTerminales"
+                 [(ngModel)]="terminal.solicitudTerminales[0].cantidadTerminales"
                  name="cantidadTerminales"
                  placeholder="Número de terminales a crear">
         </div>
@@ -33,28 +33,22 @@
         <div class="form-group">
           <label>Indicador IAC</label>
           <select class="form-control"
-                  [(ngModel)]="creacionTerminal.solicitudTerminales.indicadorICA"
+                  [(ngModel)]="terminal.solicitudTerminales[0].indicadorICA"
                   name="indicadorICA">
             <option value="50115001" selected>No aplica</option>
             <option value="50115003">Manual</option>
           </select>
         </div>
 
-        <hr>
-
         <div class="form-group">
           <label>Indicador IVA</label>
           <select class="form-control"
-                  [(ngModel)]="creacionTerminal.solicitudTerminales.indicadorIVA"
+                  [(ngModel)]="terminal.solicitudTerminales[0].indicadorIVA"
                   name="indicadorIVA">
             <option value="50115001" selected>No aplica</option>
             <option value="50115003">Manual</option>
           </select>
         </div>
-
-        <hr>
-
-        <!-- Aquí falta definir los servicios  -->
 
         <div class="form-group row">
           <div class="col-sm-2">Servicios</div>
@@ -73,12 +67,10 @@
           </div>
         </div>
 
-        <hr>
-
         <div class="form-group">
           <label>Indicador de referencia</label>
           <select class="form-control"
-                  [(ngModel)]="creacionTerminal.solicitudTerminales.indicadordeReferencia"
+                  [(ngModel)]="terminal.solicitudTerminales[0].indicadordeReferencia"
                   name="indicadorReferencia">
             <option selected>Escoja una opción...</option>
             <option value=1>Si</option>

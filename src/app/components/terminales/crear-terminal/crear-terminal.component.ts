@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CrearTerminalDto } from 'src/app/models/crearTerminalDto';
-import { IdServicioDto } from 'src/app/models/servicioDto';
+import { TerminalGenericaRequest } from 'src/app/models/sv-terminal-generica-request-dto.model';
+import { SvTerminalGenericaService } from 'src/app/services/sv-terminal-generica.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,10 +9,10 @@ import Swal from 'sweetalert2';
 })
 export class CrearTerminalComponent implements OnInit {
 
-  creacionTerminal: CrearTerminalDto = new CrearTerminalDto();
+  terminal: TerminalGenericaRequest = new TerminalGenericaRequest();
   listaServicios: any[] = [];
 
-  constructor() { }
+  constructor(private svTerminalGenerica: SvTerminalGenericaService) { }
 
   ngOnInit(): void {
     this.listaServicios = this.poblarListaServicios();
@@ -26,26 +26,23 @@ export class CrearTerminalComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.creacionTerminal.solicitudTerminales.idServicio = [];
 
     this.listaServicios.forEach((servicios) =>{
       if(servicios.enabled){
 
-        let servicio: IdServicioDto = new IdServicioDto();
-        let fecha = new Date();
+        let numService = servicios.codigo;
 
-        servicio.numService = servicios.codigo;
-        servicio.fechaInicio = `${fecha.getDate()}/${fecha.getMonth()}/${fecha.getFullYear()}`;
-        servicio.fechaFin = "";
-
-        this.creacionTerminal.solicitudTerminales.idServicio.push(servicio);
+        this.terminal.solicitudTerminales[0].idServicio.push(numService);
       }
 
     });
 
 
-    // Aquí se debe llamar el servicio de creación de terminales y enviarle el objeto
-    console.log(this.creacionTerminal);
+
+    console.log(this.terminal);
+    this.svTerminalGenerica.solicitarTerminalGenerica(this.terminal).subscribe(
+      resp => console.log(resp)
+    );
 
     Swal.close();
 
@@ -54,16 +51,19 @@ export class CrearTerminalComponent implements OnInit {
 
   private poblarListaServicios(){
     const listaServicios: any[] = [
+      {"nombre": "Comercio tradicional", "codigo": "50170000", "enabled": false},
+      {"nombre": "Multicomercio tradicional", "codigo": "50170001", "enabled": false},
+      {"nombre": "Multicomercio agencias", "codigo": "50170002", "enabled": false},
+      {"nombre": "Multicomercio servicios públicos", "codigo": "50170003", "enabled": false},
+      {"nombre": "DCC VISA", "codigo": "50170005", "enabled": false},
+      {"nombre": "DCC MC", "codigo": "50170008", "enabled": false},
       {"nombre": "3D SECURE", "codigo": "50170009", "enabled": false},
       {"nombre": "API", "codigo": "50170010", "enabled": false},
       {"nombre": "Link de pagos", "codigo": "50170011", "enabled": false},
       {"nombre": "Botón de pago", "codigo": "50170012", "enabled": false},
       {"nombre": "PAGO", "codigo": "50170013", "enabled": false},
       {"nombre": "Web de pagos", "codigo": "50170014", "enabled": false},
-      {"nombre": "Pago recurrente", "codigo": "50170015", "enabled": false},
-      {"nombre": "Recaudos", "codigo": "50170016", "enabled": false},
-      {"nombre": "Gestor de recaudo", "codigo": "50170017", "enabled": false},
-      {"nombre": "Mi pago", "codigo": "50170018", "enabled": false}
+      {"nombre": "Pago recurrente", "codigo": "50170015", "enabled": false}
     ]
     return listaServicios;
   }

@@ -14,9 +14,9 @@ import { ServicioTerminalModel } from '../models/servicio-terminal.model';
 })
 export class SvConsultaService {
 
-  constructor(private http: HttpClient) { }
-
-
+  constructor(
+    private http: HttpClient
+  ) { }
   //metodo para consulta terminal
   consultarTerminal(codigoTerminal: String): Observable<TerminalModel> {
     let xmlToJsonParser = xml2Json.parseString
