@@ -24,6 +24,7 @@ export class SvTerminalGenericaService {
         'Content-Type': 'application/json'
       })
     }
+    console.log(uri)
 
     return this.http.post<TerminalGenericaResponse>(uri, terminalGenericaRequest, httpOptions)
       .pipe( retry(2), tap( d => console.log('consulta Smart Vista Terminal Generica')),

@@ -25,10 +25,17 @@ export class SvConsultaService {
       let consultaDTO = new SVConsultaRequestDTO("unicaTerminal", codigoTerminal)
       let consultaSVObserver = this.consultar(consultaDTO).subscribe( consultaResponse => {
         xmlToJsonParser(consultaResponse.response, (err, result) => {
-          let terminalInfo = this.createTerminalModelFromJson(result)
-          observer.next(terminalInfo)
-          observer.complete()
-          consultaSVObserver.unsubscribe()
+          console.log(result.applications)
+          if(result.applications === ""){
+            observer.next(null)
+            observer.complete()
+            consultaSVObserver.unsubscribe()
+          }else{
+            let terminalInfo = this.createTerminalModelFromJson(result)
+            observer.next(terminalInfo)
+            observer.complete()
+            consultaSVObserver.unsubscribe()
+        }
         })
       });
       return {
@@ -54,7 +61,6 @@ export class SvConsultaService {
   }
 
   private createTerminalModelFromJson(terminalJson): TerminalModel {
-    console.log(terminalJson)
     const contractData = terminalJson.applications.application[0].customer[0].contract[0]
     const merchant_number = contractData.merchant[0].merchant_number[0]
     const {cst_terminal_iac, cst_terminal_iva} = contractData.merchant[0].terminal[0]

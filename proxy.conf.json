@@ -1,0 +1,7 @@
+{
+  "/api/*":{
+    "target": "https://dev-creacion-terminales-dev-pr-terminales.apps-pruebas.credibanco.com/camel",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

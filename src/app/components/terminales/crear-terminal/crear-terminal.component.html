@@ -32,8 +32,9 @@
 
         <div class="form-group">
           <label>Indicador IAC</label>
+          <!-- [(ngModel)]="terminal.solicitudTerminales[0].indicadorICA" -->
           <select class="form-control"
-                  [(ngModel)]="terminal.solicitudTerminales[0].indicadorICA"
+
                   name="indicadorICA">
             <option value="50115001" selected>No aplica</option>
             <option value="50115003">Manual</option>
@@ -41,9 +42,10 @@
         </div>
 
         <div class="form-group">
+          <!-- [(ngModel)]="terminal.solicitudTerminales[0].indicadorIVA" -->
           <label>Indicador IVA</label>
           <select class="form-control"
-                  [(ngModel)]="terminal.solicitudTerminales[0].indicadorIVA"
+
                   name="indicadorIVA">
             <option value="50115001" selected>No aplica</option>
             <option value="50115003">Manual</option>
@@ -69,8 +71,9 @@
 
         <div class="form-group">
           <label>Indicador de referencia</label>
+          <!-- [(ngModel)]="terminal.solicitudTerminales[0].indicadordeReferencia" -->
           <select class="form-control"
-                  [(ngModel)]="terminal.solicitudTerminales[0].indicadordeReferencia"
+
                   name="indicadorReferencia">
             <option selected>Escoja una opción...</option>
             <option value=1>Si</option>
@@ -80,7 +83,7 @@
 
         <hr>
 
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
 
     </div>
