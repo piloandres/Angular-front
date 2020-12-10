@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   svConsultaUri: 'https://qa-consulta-qa-sv-comercios.apps-pruebas.credibanco.com/camel/api/Consulta',
-  svTerminalGenericaUri: '/api/terminalGenerica'
+  svTerminalGenericaUri: 'https://dev-creacion-terminales-dev-pr-terminales.apps-pruebas.credibanco.com/camel/api/terminalGenerica'
 };
 
 /*
